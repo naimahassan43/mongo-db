@@ -26,19 +26,28 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-// Store into database
-async function storeInfo() {
-  // user object
-  const user = new User({
-    name: "Naima",
-    age: 32,
-    isMarried: true,
-    salary: 40000,
-    gender: "Female",
-  });
-
-  await user.save();
-
-  console.log(user);
+/******Find documents*******/
+async function fetchInformations() {
+  //   const users = await User.find({ isMarried: false, salary: 80000 }); //find == return array ;; findOne == return document object
+  //   const users = await User.findOne({ isMarried: false, salary: 80000 });
+  const users = await User.findById("6027d1fd8d4a543a2049d1a0");
+  console.log(users);
 }
-storeInfo();
+fetchInformations();
+
+/******Store into database*******/
+// async function storeInfo() {
+//   // user object
+//   const user = new User({
+//     name: "Naima",
+//     age: 32,
+//     isMarried: true,
+//     salary: 40000,
+//     gender: "Female",
+//   });
+
+//   await user.save();
+
+//   console.log(user);
+// }
+// storeInfo();
